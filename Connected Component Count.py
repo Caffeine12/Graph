@@ -8,33 +8,20 @@ graph = {0:[8,1,5],
          }
 
 def connectedComponentCount(graph):
-    value_list = []
-    for sublist in graph.values():
-        for value in sublist:
-            value_list.append(value)
-    unique_sorted_list = sorted(set(value_list))
-    print(unique_sorted_list)
-
     visited = set()
-    count = 0
-    stack=[]
-
-    for item in unique_sorted_list:
-
-
-
-
-
-        # if item not in visited:
-        #     stack.append(item)
-        #     count+=1
-        #     while(len(stack)>0):
-        #         current = stack.pop()
-        #         visited.add(current)
-        #         for neighbour in graph[current]:
-        #             if neighbour not in visited:
-        #                 stack.append(neighbour)
+    count=0
+    for key in graph:
+        if key not in visited:
+            count +=1
+            iterateNeighbours(key,graph,visited)
     return count
+
+ 
+def iterateNeighbours(key,graph,visited):
+    visited.add(key)
+    for neighbour in graph[key]:
+        if neighbour not in visited:
+            iterateNeighbours(neighbour,graph,visited)
 
 
 
