@@ -24,38 +24,31 @@ def countIsland(grid):
                     findAdjacentLands(grid,row,column,visited)
     return islandNumber
 
-            
-            
-
-
-
 def findAdjacentLands(grid,row,column,visited):
+    #Check the left position
     if column-1>=0:
         if (row,column-1) not in visited:
             visited.add((row,column-1))
             if grid[row][column-1]=='L':
                 findAdjacentLands(grid,row,column-1,visited)
-    
+    #check the right position
     if column+1<len(grid[0]):
         if (row,column+1) not in visited:
             visited.add((row,column+1))
             if grid[row][column+1]=='L':
                 findAdjacentLands(grid,row,column+1,visited)
-
+    #check the upper position
     if row-1>=0:
         if (row-1,column) not in visited:
             visited.add((row-1,column))
             if grid[row-1][column]=='L':
                 findAdjacentLands(grid,row-1,column,visited)
-    
+    #check the lower position
     if row+1<len(grid):
         if (row+1,column) not in visited:
             visited.add((row+1,column))
             if grid[row+1][column]=='L':
                 findAdjacentLands(grid,row+1,column,visited)
-
-
-
 
 grid =[['W','L','W','W','W'],
        ['W','L','W','W','W'],
